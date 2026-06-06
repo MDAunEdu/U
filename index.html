@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A Tale of Betrayal</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     background: #0a0806;
     color: #e8dcc8;
-    font-family: 'Crimson Text', Georgia, serif;
+    font-family: 'VT323', monospace;
     height: 100vh;
     overflow: hidden;
     user-select: none;
@@ -55,33 +55,38 @@
   }
 
   .chapter-label {
-    font-family: 'Crimson Text', serif;
-    font-size: 11px;
-    letter-spacing: 5px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     color: #8a6a3a;
     margin-bottom: 28px;
+    line-height: 1.8;
   }
 
   .slide-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(30px, 5.5vw, 58px);
-    font-weight: 900;
-    line-height: 1.15;
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(16px, 2.8vw, 32px);
+    font-weight: 400;
+    line-height: 1.8;
     color: #f0e6ce;
     margin-bottom: 24px;
-    text-shadow: 0 2px 40px rgba(180,120,40,0.3);
+    text-shadow: 2px 2px 0 #000, 0 0 20px rgba(180,120,40,0.3);
+    letter-spacing: 1px;
   }
 
   .slide-title em {
-    font-style: italic;
+    font-style: normal;
     color: #c8a060;
+    text-shadow: 2px 2px 0 #000, 0 0 16px rgba(200,160,96,0.5);
   }
 
   .slide-body {
-    font-size: clamp(17px, 2.2vw, 22px);
-    line-height: 1.85;
+    font-family: 'VT323', monospace;
+    font-size: clamp(22px, 2.8vw, 28px);
+    line-height: 1.75;
     color: #c8b89a;
+    letter-spacing: 0.5px;
   }
 
   .slide-body em {
@@ -103,10 +108,10 @@
   }
 
   .quote-mark {
-    font-family: 'Playfair Display', serif;
-    font-size: 90px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 40px;
     color: #2a1c08;
-    line-height: 0.4;
+    line-height: 0.6;
     display: block;
     margin-bottom: 12px;
   }
@@ -154,7 +159,7 @@
   /* Final slide */
   .slide-final .slide-title {
     color: #ff6b6b;
-    text-shadow: 0 0 60px rgba(255,60,60,0.5);
+    text-shadow: 3px 3px 0 #000, 0 0 60px rgba(255,60,60,0.5);
     animation: pulse-red 2s ease-in-out infinite;
   }
 
@@ -164,13 +169,13 @@
   }
 
   .accusation {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(15px, 2.2vw, 20px);
-    font-weight: 700;
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(9px, 1.4vw, 13px);
     color: #ff9090;
     letter-spacing: 0.5px;
-    line-height: 1.7;
+    line-height: 2.2;
     margin-top: 16px;
+    text-shadow: 1px 1px 0 #000;
   }
 
   .emoji-big {
@@ -253,8 +258,9 @@
     bottom: 56px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 11px;
-    letter-spacing: 3px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     color: #4a3820;
     z-index: 200;
@@ -265,6 +271,17 @@
   @keyframes fade-hint {
     0%, 60% { opacity: 1; }
     100% { opacity: 0; }
+  }
+
+  /* HP Bar */
+  .health-bar-wrap { margin: 18px auto 0; width: 220px; }
+  .health-label { font-family: 'Press Start 2P', monospace; font-size: 7px; color: #ff5050; text-align: left; margin-bottom: 5px; text-shadow: 1px 1px 0 #000; }
+  .health-bar { height: 14px; background: #1a0000; border: 2px solid #500000; overflow: hidden; }
+  .health-fill { height: 100%; width: 100%; animation: drain 3s steps(20) forwards 0.6s; }
+  @keyframes drain {
+    from { width: 100%; background: #39ff14; }
+    40% { background: #f5c518; }
+    100% { width: 6%; background: #ff3333; }
   }
 </style>
 </head>
@@ -411,7 +428,7 @@
     <div class="vignette"></div>
     <div class="slide-content">
       <p class="chapter-label">The Grand Reveal</p>
-      <h1 class="slide-title">IT. WAS. YOU.</h1>
+      <h1 class="slide-title">IT. WAS. YOU. SUMAIRA.</h1>
       <div class="divider"></div>
       <span class="emoji-big">😭</span>
       <p class="accusation">
@@ -419,8 +436,12 @@
         YOU said yes. YOU got my hopes up.<br>
         AND YOU DIDN'T SHOW UP.
       </p>
+      <div class="health-bar-wrap">
+        <p class="health-label">FRIENDSHIP HP:</p>
+        <div class="health-bar"><div class="health-fill"></div></div>
+      </div>
       <div class="divider"></div>
-      <p class="slide-body" style="font-size:18px; color:#c8a080; margin-top:6px;">
+      <p class="slide-body" style="font-size:22px; color:#c8a080; margin-top:6px;">
         History will remember this day.<br>
         <em>I certainly will.</em> 😤
       </p>
